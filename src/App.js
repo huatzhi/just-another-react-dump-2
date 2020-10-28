@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 import './App.css';
+import MainMenu from './components/MainMenu/MainMenu';
+import { Layout } from "antd";
+
+import "./App.css";
+
+import SignInPage from "./pages/signin/signin";
+
+const { Header, Content, Footer } = Layout;
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout style={{ minHeight: "100vh" }}>
+        <MainMenu />
+        <Layout className="site-layout">
+          <Header className="site-layout-background" style={{ padding: 0 }} />
+          <Content style={{ margin: "0 16px" }}>
+            <Switch>
+              <Route path='/signin' component={SignInPage} />
+            </Switch>
+          </Content>
+          <Footer style={{ textAlign: "center" }}>
+            Ant Design ©2018 Created by Ant UED
+          </Footer>
+        </Layout>
+      </Layout>
     </div>
   );
 }
