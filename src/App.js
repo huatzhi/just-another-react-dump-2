@@ -6,7 +6,7 @@ import { Layout } from "antd";
 
 import "./App.css";
 
-import SignInPage from "./pages/signin/signin";
+import SignInPage from "./pages/SignIn/SignIn";
 
 const { Header, Content, Footer } = Layout;
 

@@ -6,7 +6,7 @@ export const login = (FormData) => {
     // let response;
     console.log(FormData);
 
-    LOGIN_SUCCESS("something");
+    dispatch(LOGIN_SUCCESS("something"));
 
     
     /* try {

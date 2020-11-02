@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 // eslint-disable-next-line
+import { useSelector } from "react-redux"
 import { Link } from 'react-router-dom';
 import { Layout, Menu } from "antd";
 
@@ -9,6 +10,7 @@ const { Sider } = Layout;
 
 const MainMenu = () => {
   const [collapsed, setCollapse] = useState(false);
+  const token = useSelector(state => state.auth.token)
 
   const onCollapse = () => {
     setCollapse(!collapsed);
@@ -18,12 +20,16 @@ const MainMenu = () => {
     <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
       <div className="logo" />
       <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-        
-        <Menu.Item key="1">
-          <Link to="/signin">
-            Login
-          </Link>
-        </Menu.Item>
+        {token ? (
+          <Menu.Item key="1">
+            <Link to="/signin">Login</Link>
+          </Menu.Item>
+        ) : (
+          <Menu.Item key="1">
+            <Link to="/signout">Logout</Link>
+          </Menu.Item>
+        )}
+
         {/*<Menu.Item key="1" >
           Option 1
         </Menu.Item>
